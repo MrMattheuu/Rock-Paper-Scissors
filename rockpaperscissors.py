@@ -8,8 +8,9 @@
 #Initializing the pygame library:
 
 #The pygame.init() function is called to initialize the library.
-import random
+
 import pygame
+import random
 pygame.init()
 
 #Defining variables and constants:
@@ -17,11 +18,6 @@ pygame.init()
 #BGCOLOR is defined as a constant representing the background color of the game screen.
 #player_1 is defined as a variable to store the player's choice.
 #Defining variables and constants:
-
-##change
-#variables and constants here
-BGCOLOR  = "#Ff00e4"
-player_1 = ""
 
 #Loading assets:
 #Three image files, which represent rock, scissors, and paper, are loaded into memory and stored as variables rock_image, scissors_image, and paper_image respectively.
@@ -36,6 +32,21 @@ scissors_image=pygame.transform.scale(scissors_image,(240,155))
 
 paper_image=pygame.image.load("assets/happypaper.png")
 paper_image=pygame.transform.scale(paper_image,(175,182))
+
+##change
+#variables and constants here
+screen = pygame.display.set_mode([800,800])
+BGCOLOR  = "#Ff00e4"
+player_1 = ""
+'''
+rock = screen.blit(rock_image,(50,100))
+scissors = screen.blit(scissors_image,(350,100))
+paper = screen.blit(paper_image,(600,100))
+'''
+
+#Loading assets:
+#Three image files, which represent rock, scissors, and paper, are loaded into memory and stored as variables rock_image, scissors_image, and paper_image respectively.
+#The pygame.transform.scale function is used to scale each image to a specific size.
 
 ##Functions to create interactable objects:
 
@@ -55,7 +66,7 @@ def computerselction():
 
 
 
-#Function to display the player's choice:
+#unction to display the player's choice:
 #The player_choice function is defined to display the player's choice as text on the game screen.
 def player_choice(text):
     setup_text = pygame.font.SysFont("arial",60)
@@ -65,18 +76,9 @@ def player_choice(text):
 #Initializing the game screen:
 #A game screen with a specified size of 800x800 is created and stored as the screen variable.
 #initializing screen and set it up
-screen = pygame.display.set_mode([800,800])
+
 player2= computerselction()
-#should display whatever random (rock paper or sicssors) the computer chose
-
-#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-screen.blit({"rock": rock_image, "paper": paper_image, "scissors": scissors_image}[player2](400, 600))
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#taken from ChatGBT 
-
-
-
-
+player2
 #Game loop:
 
 # while loop is defined to run the game as long as the running variable is set to True.
@@ -102,21 +104,21 @@ while running:
             elif event.key == pygame.K_2:
                 player_1="scissors"
         if event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_x, mouse_y = event.pos
-            if (mouse_x >= 50 and mouse_x <=355) and (mouse_y >= 100 and mouse_y <= 260):
-                player_1 = "rock"
-            elif (mouse_x >= 350 and mouse_x <=595) and (mouse_y >= 100 and mouse_y <= 250):
-                player_1 = "scissors"
-            elif (mouse_x >= 600 and mouse_x <=775) and (mouse_y >= 100 and mouse_y <= 282):
-                player_1 = "paper"
-            if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_x, mouse_y = event.pos
-                if rock.collidepoint(mouse_x,mouse_y):
+                if (mouse_x >= 50 and mouse_x <=355) and (mouse_y >= 100 and mouse_y <= 260):
                     player_1 = "rock"
-                elif scissors.collidepoint(mouse_x,mouse_y):
+                elif (mouse_x >= 350 and mouse_x <=595) and (mouse_y >= 100 and mouse_y <= 250):
                     player_1 = "scissors"
-                elif paper.collidepoint(mouse_x,mouse_y):
+                elif (mouse_x >= 600 and mouse_x <=775) and (mouse_y >= 100 and mouse_y <= 282):
                     player_1 = "paper"
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_x, mouse_y = event.pos
+                    if rock.collidepoint(mouse_x,mouse_y):
+                        player_1 = "rock"
+                    elif scissors.collidepoint(mouse_x,mouse_y):
+                        player_1 = "scissors"
+                    elif paper.collidepoint(mouse_x,mouse_y):
+                        player_1 = "paper"
 
 ##get computer player input
 #Getting the computer player's input:
@@ -129,9 +131,11 @@ while running:
 
 #A series of if statements is used to compare the player's and computer's choices to determine the outcome of the game. 
 # Currently, there is only one scenario that prints "tie" if both players choose paper.
-    
-
-
+    '''
+    if player2 == "paper" and player_1 == "paper":
+         print("tie")
+    '''
+#update using font code####
 #Updating the game screen:
 #The screen.fill function is used to fill the screen with the background color defined in BGCOLOR.
 #The screen.blit function is used to render the images and the player's choice on the game screen.
@@ -140,33 +144,32 @@ while running:
   #  #do stuff
 
    # #refresh screen
-screen.fill(BGCOLOR)
-pygame.display.update()
-pygame.display.flip()
-
+    screen.fill(BGCOLOR)
     #printing computer choice as image
-if player2 == "paper":
-    screen.blit(paper_image,(600,400))
+    if player2 == "paper":
+        screen.blit(paper_image,(600,400))
       
+    rock = screen.blit(rock_image,(50,100))
+    scissors = screen.blit(scissors_image,(350,100))
+    paper = screen.blit(paper_image,(600,100))
+    player_choice(f"you selected {player_1}")
+
     
-rock = screen.blit(rock_image,(50,100))
-scissors = screen.blit(scissors_image,(350,100))
-paper = screen.blit(paper_image,(600,100))
  #  #must I delete this last 3???
 
+    pygame.display.update()
 
-
-'''
-if player_1 != "":
+    '''
+    if player_1 != "":
     player_choice(f"You've selected {player_1}")'''
         
     
     
  #   #draw screen
- 
+    pygame.display.flip()
+    
 
 pygame.quit()
-
 
 
 
