@@ -71,7 +71,7 @@ def computerselction():
 def player_choice(text):
     setup_text = pygame.font.SysFont("arial",60)
     textSurface = setup_text.render(text, True, "black")
-    screen.blit(textSurface, (100,500))
+    screen.blit(textSurface, (100,300))
 
 #Initializing the game screen:
 #A game screen with a specified size of 800x800 is created and stored as the screen variable.
@@ -79,6 +79,10 @@ def player_choice(text):
 
 player2= computerselction()
 player2
+#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+screen.blit({"rock": rock_image, "paper": paper_image, "scissors": scissors_image}[player2], (400, 600))
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#taken from ChatGPT 
 #Game loop:
 
 # while loop is defined to run the game as long as the running variable is set to True.
@@ -146,13 +150,22 @@ while running:
    # #refresh screen
     screen.fill(BGCOLOR)
     #printing computer choice as image
-    if player2 == "paper":
-        screen.blit(paper_image,(600,400))
       
     rock = screen.blit(rock_image,(50,100))
     scissors = screen.blit(scissors_image,(350,100))
     paper = screen.blit(paper_image,(600,100))
+
+    #computer choice selection image*
+    if player_1 != "":
+        screen.blit({"rock": rock_image, "paper": paper_image, "scissors": scissors_image}[player2], (400, 600))
+
     player_choice(f"you selected {player_1}")
+    if player_1 == "rock":
+        #draw box around rock
+    elif player_1 == "paper":
+        #draw box around paper
+    elif player_1 == "scissors":
+        #draw box around scissors
 
     
  #  #must I delete this last 3???
