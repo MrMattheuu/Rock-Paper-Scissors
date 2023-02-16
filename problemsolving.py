@@ -33,7 +33,7 @@ for x in range (length):
         wordcount +=0
     elif (inputt[x]) == " " and (inputt[x-1]) != " ":
         wordcount +=1
-        
+        #comment
 print(f"the word count of your message is {wordcount}")
     
         
