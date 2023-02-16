@@ -23,10 +23,20 @@
 
 
 #GET INPUT
-input = input("Please type stuff here: ")
+inputt = input("Please type stuff here: ")
 
-#GET THE AMOUNT OF WORDS
-if input.count("  ") >= 0:
+
+#get legnth
+length = len(inputt)
+#check what is/isnt a space
+for x in range (length):
+    if (inputt[x]) == " ":
+        
+
+'''
+#if there are any double spaces
+if input.count(" ") 
+
     #dont count the spaces
     *placeholder*
 
@@ -38,3 +48,4 @@ if input.count("  ") == 0:
 #PRINT WORD COUNT
 print(f"the word count of the message is: {wordcount}")
 
+'''
