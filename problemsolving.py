@@ -20,8 +20,7 @@
 #print(ronansnumbers.count("!"))
 
 #print(ronansnumbers.split("o"))
-
-
+wordcount = 0
 #GET INPUT
 inputt = input("Please type stuff here: ")
 
@@ -30,7 +29,13 @@ inputt = input("Please type stuff here: ")
 length = len(inputt)
 #check what is/isnt a space
 for x in range (length):
-    if (inputt[x]) == " ":
+    if (inputt[x]) == " " and (inputt[x-1]) == " ":
+        wordcount +=0
+    elif (inputt[x]) == " " and (inputt[x-1]) != " ":
+        wordcount +=1
+        
+print(f"the word count of your message is {wordcount}")
+    
         
 
 '''
