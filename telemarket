@@ -1,0 +1,31 @@
+#matthew Boylan
+#telemarket.py
+#Feb 17 2023
+#To check if a phone number is a telemarketer
+
+signs = 0
+print("When entering a phone number please enter it without spaces, commas, parenthesis or hyphens")
+print("Ex: 5208728851")
+Phonenumberin = int(input("Please enter a phone number: "))
+def removeexcess(Phone_number):
+    #this function removes all non numbers from the input
+    clean_numbers = ""
+    for chr in Phonenumberin:
+        if chr in (1,2,3,4,5,6,7,8,9,0):
+            clean_numbers += chr
+    return clean_numbers
+
+
+
+if Phonenumberin[3] == '7' or Phonenumberin[3] == '9':
+    signs += 1
+    if Phonenumberin[-1] == '3' or Phonenumberin[-1] == '0' or Phonenumberin[-1] == '6':
+        signs += 1
+        if Phonenumberin[7] == Phonenumberin[8]:
+            signs += 1
+            if Phonenumberin[6] == '6' or Phonenumberin[6] == '4':
+            signs += 1
+if signs > 3:
+    print("THAT NUMBER IS A TELEMARKETER!!!")
+
+
